@@ -13,8 +13,13 @@
  
  Resolution:
  
- Preventing server side javascript injection attacks should be done by validating user inputs on the server before processing.
- 
+ Preventing server side javascript injection attacks should be done by using parameters instead of constructing strings. For   
+example, the query should be set up in this format instead :
+
+db.query("SELECT * FROM User WHERE userId=?", [req.session.userId], function(error, data) {
+   // Do stuff with data
+});
+
  
  
  ##ATTACK 2:
@@ -30,7 +35,7 @@
  ##ATTACK 3:
  http://ec2-18-208-136-252.compute-1.amazonaws.com:8080/login
  
- Attack: setTimeout(while(1))
+ Attack: setTimeout(while(1)
 
 
 
